@@ -16,3 +16,5 @@ it('renders div HOLA if no name is passed in', () => {
     const wrapper = shallow(<Hello />);
     expect(wrapper.find('div').text()).toEqual('HOLA');
 });
+
+//test trigger
