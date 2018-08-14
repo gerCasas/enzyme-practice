@@ -13,7 +13,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --coverage --coverageReporters=text-lcov | coveralls",
     "eject": "react-scripts eject"
   },
   "jest": {
@@ -31,5 +31,8 @@
         "statements": 90
       }
     }
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.2"
   }
 }
