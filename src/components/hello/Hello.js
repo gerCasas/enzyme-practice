@@ -1,25 +1,39 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import ApiService from '../../utils/ApiService';
 
-const Hello = props => {
+class Hello extends Component {
 
+	constructor(props) {
+		super(props);
+		this.state = {
+			title: 'Request hello world from ApiService'
+		};
+	}
 
-  // return <p>Hello, {props.name}!</p>;
+	handleClick() {
+		ApiService.getUserById('1')
+		.then(
+			res => {
+				this.setState({
+						title: 'Request result: ' + res.name
+				});
+		},
+			error => {
 
-		if (props.name) {
-				return <p>Hello, {props.name}!</p>;
-		} else {
-				return <div>HOLA</div>;
-		}
+			}
+		);
+	}
 
-};
-
-Hello.propTypes = {
-  name: PropTypes.string,
-};
-
-// Hello.defaultProps = {
-//   name: 'Unknown',
-// };
+	render() {
+		return (
+			<div className="hello-container">
+				<div className="hello-title">{this.state.title}</div>
+          <button className="hello-button" onClick={(e) => this.handleClick(e)}>
+						Click me
+          </button>
+			</div>
+		);
+	}
+}
 
 export default Hello;
